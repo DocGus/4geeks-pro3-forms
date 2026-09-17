@@ -3,9 +3,500 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+
+    <title>Payment Form Example</title>
+
+    <style>
+        * {
+            box-sizing: border-box;
+        }
+
+        body {
+            margin: 0;
+            padding: 40px;
+            font-family: Arial, Helvetica, sans-serif;
+            background-color: white;
+            color: #212529;
+        }
+
+        .container {
+            width: 100%;
+            max-width: 960px;
+            margin: 0 auto;
+        }
+
+        h1 {
+            margin: 0 0 25px;
+            font-size: 32px;
+            font-weight: 500;
+        }
+
+        form {
+            border: 1px solid #dee2e6;
+            border-radius: 6px;
+            overflow: hidden;
+        }
+
+        .form-body {
+            padding: 20px;
+        }
+
+        /* Alert */
+
+        .alert {
+            margin-bottom: 20px;
+            padding: 12px 15px;
+            border: 1px solid #f5c2c7;
+            border-radius: 5px;
+            background-color: #f8d7da;
+            color: #842029;
+        }
+
+        /* General rows */
+
+        .row {
+            display: flex;
+            gap: 20px;
+            margin-bottom: 20px;
+        }
+
+        .field {
+            flex: 1;
+        }
+
+        /* Labels */
+
+        label {
+            display: block;
+            margin-bottom: 8px;
+            font-size: 15px;
+        }
+
+        /* Inputs */
+
+        input,
+        select,
+        textarea {
+            width: 100%;
+            padding: 10px 12px;
+            border: 1px solid #ced4da;
+            border-radius: 4px;
+            font-family: inherit;
+            font-size: 15px;
+        }
+
+        input:focus,
+        select:focus,
+        textarea:focus {
+            outline: none;
+            border-color: #86b7fe;
+            box-shadow: 0 0 0 3px rgba(13, 110, 253, 0.15);
+        }
+
+        /* Payment methods */
+
+        .payment-box {
+            margin-top: 25px;
+        }
+
+        .payment-options {
+            display: flex;
+            gap: 15px;
+            padding: 12px;
+            border: 1px solid #ced4da;
+            border-radius: 4px;
+            background-color: #fff;
+        }
+
+        .payment-option {
+            display: flex;
+            align-items: center;
+            gap: 5px;
+            margin: 0;
+        }
+
+        .payment-option input {
+            width: auto;
+            margin: 0;
+        }
+
+        /* Message */
+
+        textarea {
+            min-height: 120px;
+            resize: vertical;
+        }
+
+        .message-help {
+            display: block;
+            margin-top: 5px;
+            color: #6c757d;
+            font-size: 14px;
+        }
+
+        /* Buttons */
+
+        .form-footer {
+            display: flex;
+            justify-content: flex-end;
+            gap: 10px;
+            padding: 15px 20px;
+            border-top: 1px solid #dee2e6;
+            background-color: #f8f9fa;
+        }
+
+        button {
+            padding: 9px 16px;
+            border: 1px solid #ced4da;
+            border-radius: 4px;
+            font-size: 15px;
+            cursor: pointer;
+        }
+
+        .btn-cancel {
+            background-color: #fff;
+            color: #212529;
+        }
+
+        .btn-send {
+            border-color: #0d6efd;
+            background-color: #0d6efd;
+            color: white;
+        }
+
+        /* Responsive */
+
+        @media (max-width: 700px) {
+            body {
+                padding: 20px;
+            }
+
+            .row {
+                flex-direction: column;
+            }
+
+            .payment-options {
+                flex-direction: column;
+            }
+        }
+    </style>
 </head>
+
 <body>
-    <h1>Hello World</h1>
+
+    <main class="container">
+
+        <h1>Payment form example</h1>
+
+        <form action="#" method="post">
+
+            <div class="form-body">
+
+                <!-- Error message -->
+
+                <div class="alert">
+                    Some fields are missing
+                </div>
+
+
+                <!-- Card information -->
+
+                <div class="row">
+
+                    <div class="field">
+
+                        <label for="card-number">
+                            Card #
+                        </label>
+
+                        <input
+                            type="text"
+                            id="card-number"
+                            name="card-number"
+                            placeholder="Card number"
+                            minlength="13"
+                            maxlength="19"
+                            required
+                        >
+
+                    </div>
+
+
+                    <div class="field">
+
+                        <label for="cvc">
+                            CVC #
+                        </label>
+
+                        <input
+                            type="text"
+                            id="cvc"
+                            name="cvc"
+                            placeholder="CVC"
+                            pattern="[0-9]{3,4}"
+                            maxlength="4"
+                            required
+                        >
+
+                    </div>
+
+
+                    <div class="field">
+
+                        <label for="amount">
+                            Amount
+                        </label>
+
+                        <input
+                            type="number"
+                            id="amount"
+                            name="amount"
+                            placeholder="Amount"
+                            min="0"
+                            step="0.01"
+                            required
+                        >
+
+                    </div>
+
+                </div>
+
+
+                <!-- Personal information -->
+
+                <div class="row">
+
+                    <!-- Left column -->
+
+                    <div class="field">
+
+                        <label for="first-name">
+                            First Name
+                        </label>
+
+                        <input
+                            type="text"
+                            id="first-name"
+                            name="first-name"
+                            placeholder="First Name"
+                            required
+                        >
+
+
+                        <br>
+
+
+                        <label for="city">
+                            City
+                        </label>
+
+                        <input
+                            type="text"
+                            id="city"
+                            name="city"
+                            placeholder="City"
+                            required
+                        >
+
+
+                        <!-- Payment methods -->
+
+                        <div class="payment-box">
+
+                            <label>
+                                We accept:
+                            </label>
+
+                            <div class="payment-options">
+
+                                <label class="payment-option">
+
+                                    <input
+                                        type="radio"
+                                        name="card-type"
+                                        value="mastercard"
+                                        required
+                                    >
+
+                                    Mastercard
+
+                                </label>
+
+
+                                <label class="payment-option">
+
+                                    <input
+                                        type="radio"
+                                        name="card-type"
+                                        value="visa"
+                                    >
+
+                                    Visa
+
+                                </label>
+
+
+                                <label class="payment-option">
+
+                                    <input
+                                        type="radio"
+                                        name="card-type"
+                                        value="amex"
+                                    >
+
+                                    American Express
+
+                                </label>
+
+                            </div>
+
+                        </div>
+
+                    </div>
+
+
+                    <!-- Right column -->
+
+                    <div class="field">
+
+                        <label for="last-name">
+                            Last Name
+                        </label>
+
+                        <input
+                            type="text"
+                            id="last-name"
+                            name="last-name"
+                            placeholder="Last Name"
+                            required
+                        >
+
+
+                        <br>
+
+
+                        <!-- State + Postal Code -->
+
+                        <div class="row">
+
+                            <div class="field">
+
+                                <label for="state">
+                                    State
+                                </label>
+
+                                <select
+                                    id="state"
+                                    name="state"
+                                    required
+                                >
+
+                                    <option value="">
+                                        Pick a state
+                                    </option>
+
+                                    <option value="alabama">
+                                        Alabama
+                                    </option>
+
+                                    <option value="alaska">
+                                        Alaska
+                                    </option>
+
+                                    <option value="arizona">
+                                        Arizona
+                                    </option>
+
+                                    <option value="california">
+                                        California
+                                    </option>
+
+                                    <option value="florida">
+                                        Florida
+                                    </option>
+
+                                    <option value="new-york">
+                                        New York
+                                    </option>
+
+                                    <option value="texas">
+                                        Texas
+                                    </option>
+
+                                </select>
+
+                            </div>
+
+
+                            <div class="field">
+
+                                <label for="postal-code">
+                                    Postal Code
+                                </label>
+
+                                <input
+                                    type="text"
+                                    id="postal-code"
+                                    name="postal-code"
+                                    placeholder="Postal Code"
+                                    pattern="[0-9]{5}"
+                                    maxlength="5"
+                                    required
+                                >
+
+                            </div>
+
+                        </div>
+
+
+                        <!-- Message -->
+
+                        <label for="message">
+                            Message
+                        </label>
+
+                        <textarea
+                            id="message"
+                            name="message"
+                            placeholder="Add any notes here."
+                            required
+                        ></textarea>
+
+                        <small class="message-help">
+                            Add any notes here.
+                        </small>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+
+            <!-- Form buttons -->
+
+            <div class="form-footer">
+
+                <button
+                    type="button"
+                    class="btn-cancel"
+                >
+                    Cancel
+                </button>
+
+
+                <button
+                    type="submit"
+                    class="btn-send"
+                >
+                    Send
+                </button>
+
+            </div>
+
+        </form>
+
+    </main>
+
 </body>
 </html>
